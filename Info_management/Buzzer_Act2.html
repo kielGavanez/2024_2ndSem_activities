@@ -25,37 +25,46 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        .team1 {
-            height: 450px;
-            width: 100%;
+        .team {
+            margin-top: 1rem;
+            height: 465px;
+            width: 465px;
             background-color: gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
             
         }
-        .team2 {
-            height: 450px;
-            width: 100%;
-            background-color: gray;
-        }
-        .team1div {
-            border: 1px solid black;
-            padding-left: 15rem;
-        }
-        .team2div {
-            padding-right: 15rem;
+        .teamdiv{
+            gap: 2rem;
+            justify-content: center;
+                      
+        } 
+        .teamDisplay{
+            display: flex;
+            justify-content: center;
         }
         .body {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             height: 100%;
+            gap: 12rem;
         }
         .inputArea {
             display: flex;
+            gap: 10px;
         }
         button {
             width: 100%;
-            padding: 1rem;
+            padding: 10px;
             background-color: blue;
             color: white;
+            border-radius: 5px;
+        }
+        .button {
+            display: flex;
+            justify-content: center;
         }
         .inputArea, input{
             width: 100%;
@@ -66,6 +75,8 @@
         input {
             background-color: aqua;
             border-radius: 5px;
+            margin-top: 5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -75,45 +86,183 @@
         <h1>Buzzer</h1>
     </header>
     <div class="body">
-        <div class="team1div">
+        <div class="teamdiv">
             <div class="inputArea">
                 <div>
-                    <label for="">Player 1</label>
-                    <input type="text">
+                    <label for="player1" id="player1">Player 1</label>
+                    <input type="text" value="Player 1" id="p1Name">
                 </div>
                 <div>
-                    <label for="">Player Key</label>
-                    <input type="text">
+                    <label for="playerKey">Player Key</label>
+                    <input type="text" id="p1Key" value="a">
                 </div>
             </div>
-            <div>
-                <button>Ready</button>
+            <div class="button">
+                <button onclick="ready1()">Ready</button>
             </div>
-            <div class="team1">
-                <label for="p1Name">P1</label>
+            <div class="teamDisplay">
+                <div class="team" id="team1">
+                    <h2 id="p1Box"></h2>
+                </div>
             </div>
         </div>
-        <div class="team2div">
+        <div class="teamdiv">
             <div class="inputArea">
                 <div>
-                    <label for="">Player 2</label>
-                    <input type="text">
+                    <label for="player2" id="player2">Player 2</label>
+                    <input type="text" value="Player 2" id="p2Name">
                 </div>
                 <div>
-                    <label for="">Player Key</label>
-                    <input type="text">
+                    <label for="playerKey">Player Key</label>
+                    <input type="text" id="p2Key" value="l">
                 </div>
             </div>
             <div>
                 <button>Ready</button>
             </div>
-            <div class="team2">
-                <label for="p1Name">P2</label>
+            <div class="teamDisplay">
+                <div class="team" id="team2">
+                    <h2 id="p2Box"></h2>
+                </div>
             </div>
         </div>
     </div>
     <footer>
         <h1>Made by Kiel Andrew Gavanez</h1>
     </footer>
+    
+
+    <script>
+        let p1Name = document.getElementById('p1Name');
+        let p2Name = document.getElementById('p2Name');
+        let p1Key = document.getElementById('p1Key');
+        let p2Key = document.getElementById('p2Key');
+        let team1 = document.getElementById('team1');
+        let team2 = document.getElementById('team2');
+
+        let t1 = false
+        let t2 = false
+        let done = false
+
+        if (localStorage.getItem('p1Name') != null 
+            && localStorage.getItem('p1Key') != null
+            && localStorage.getItem('p2Name') != null
+            && localStorage.getItem('p2Key') != null) {
+                p1Name.value = localStorage.getItem('p1Name')
+                p1Key.value = localStorage.getItem('p1Key')
+                p2Name.value = localStorage.getItem('p2Name')
+                p2Key.value = localStorage.getItem('p2Key')
+
+                document.getElementById('p1Box').innerHTML = p1Name.value
+                document.getElementById('p2Box').innerHTML = p2Name.value
+        } else {
+                localStorage.setItem('p1Name', '')
+                localStorage.setItem('p1Key', '')
+                localStorage.setItem('p2Name', '')
+                localStorage.setItem('p2Key', '')
+            
+                document.getElementById('p1Box').innerHTML = p1Name.value
+                document.getElementById('p2Box').innerHTML = p2Name.value
+        }
+        
+        p1Name.addEventListener('input', function (o){
+            let max = 10
+            let input = this.value
+
+            document.getElementById('p1Box').innerHTML = p1Name.value
+            if (input.length > max) {
+                this.value = input.slice(0, max);
+                document.getElementById('p1Box').innerHTML = p1Name.value
+            }
+        })
+
+        p2Name.addEventListener('input', function (o){
+            let max = 10
+            let input = this.value
+
+            document.getElementById('p2Box').innerHTML = p2Name.value
+            if (input.length > max) {
+                this.value = input.slice(0, max);
+                document.getElementById('p2Box').innerHTML = p2Name.value
+            }
+        })
+
+        p1Key.addEventListener('input', function(i){
+            let max = 1
+            let input = this.value
+            if (p1Key.value != p2Key.value) {
+                if (input.length > max) {
+                    this.value = input.slice(0, max)
+                }
+            } else {
+                alert('Same key is not allowed')
+                this.value = 'a'
+            }
+        })
+            
+        p2Key.addEventListener('input', function(i){
+            let max = 1
+            let input = this.value
+            if (p2Key.value != p1Key.value) {
+                if (input.length > max) {
+                    this.value = input.slice(0, max)
+                }
+            } else {
+                alert('Same key is not allowed')
+                this.value = 'a'
+            }
+        })
+
+        document.addEventListener('keypress', function (z){
+          if (z.key == 'Enter') {
+            p1Name.blur()
+            p2Name.blur()
+            p1Key.blur()
+            p2Key.blur()
+          }  
+        })
+
+        document.addEventListener('keydown', function(a){
+            if (t1 == true && t2 == true) {
+                if (!done) {
+                    if (a.key == p1Key.value) {
+                        team1.style.backgroundColor = 'red'
+                        done = true
+                    } else if (a.key == p2Key.value) {
+                        team2.style.backgroundColor = 'blue'
+                        done = true 
+                    }
+                }
+            }
+        })
+
+        function ready1() {
+            t1 = true
+            localStorage.setItem('p1Name', p1Name.value)
+            localStorage.setItem('p1Key', p1Key.value)
+
+            p1Name.disabled = true
+            p1Key.disabled = true
+            p1Name.style.backgroundColor = 'gray'
+            p1Name.style.color = 'white'
+            p1Key.style.backgroundColor = 'gray'
+            p1Key.style.color = 'white'
+        }
+
+        function ready2() {
+            t2 = true
+            localStorage.setItem('p2Name', p2Name.value)
+            localStorage.setItem('p2Key', p2Key.value)
+
+            p2Name.disabled = true
+            p2Key.disabled = true
+            p2Name.style.backgroundColor = 'gray'
+            p2Name.style.color = 'white'
+            p2Key.style.backgroundColor = 'gray'
+            p2Key.style.color = 'white'
+
+        }
+
+    </script>
 </body>
 </html>
