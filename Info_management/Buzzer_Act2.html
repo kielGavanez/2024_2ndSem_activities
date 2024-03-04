@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* div {
+            border: 1px solid red;
+        } */
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .team1 {
+            height: 450px;
+            width: 100%;
+            background-color: gray;
+            
+        }
+        .team2 {
+            height: 450px;
+            width: 100%;
+            background-color: gray;
+        }
+        .team1div {
+            border: 1px solid black;
+            padding-left: 15rem;
+        }
+        .team2div {
+            padding-right: 15rem;
+        }
+        .body {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .inputArea {
+            display: flex;
+        }
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: blue;
+            color: white;
+        }
+        .inputArea, input{
+            width: 100%;
+            padding-block: 1rem ;
+            border: 0;
+            
+        }
+        input {
+            background-color: aqua;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Activity2</h1>
+        <h1>Buzzer</h1>
+    </header>
+    <div class="body">
+        <div class="team1div">
+            <div class="inputArea">
+                <div>
+                    <label for="">Player 1</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="">Player Key</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div>
+                <button>Ready</button>
+            </div>
+            <div class="team1">
+                <label for="p1Name">P1</label>
+            </div>
+        </div>
+        <div class="team2div">
+            <div class="inputArea">
+                <div>
+                    <label for="">Player 2</label>
+                    <input type="text">
+                </div>
+                <div>
+                    <label for="">Player Key</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div>
+                <button>Ready</button>
+            </div>
+            <div class="team2">
+                <label for="p1Name">P2</label>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h1>Made by Kiel Andrew Gavanez</h1>
+    </footer>
+</body>
+</html>
