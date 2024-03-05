@@ -8,9 +8,10 @@
         * {
             margin: 0;
             padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
         }
         /* div {
-            border: 1px solid red;
+                border: 1px solid red;
         } */
         header {
             display: flex;
@@ -19,11 +20,7 @@
         }
         footer {
             text-align: center;
-            padding: 2rem;
-            position: absolute;
-            top: 90%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            padding: 3rem;
         }
         .team {
             margin-top: 1rem;
@@ -66,9 +63,14 @@
             display: flex;
             justify-content: center;
         }
+        .inputColor{
+            display: flex;
+            padding: 0;
+            width: 3rem;
+        }
         .inputArea, input{
             width: 100%;
-            padding-block: 1rem ;
+            padding-block: 6px;
             border: 0;
             
         }
@@ -78,6 +80,7 @@
             margin-top: 5px;
             text-align: center;
         }
+        
     </style>
 </head>
 <body>
@@ -90,11 +93,15 @@
             <div class="inputArea">
                 <div>
                     <label for="player1" id="player1">Player 1</label>
-                    <input type="text" value="Player 1" id="plyr1N">
+                    <input type="text" value="Player 1" id="plyr1Name">
                 </div>
                 <div>
                     <label for="playerKey">Player Key</label>
-                    <input type="text" id="plyr1K" value="a">
+                    <input type="text" id="plyr1Key" value="a">
+                </div>
+                <div>
+                    <label for="player1" id="player1">Color</label>
+                    <input type="color" value="#ff0000" class="inputColor" id="plyr1Color">
                 </div>
             </div>
             <div class="button">
@@ -110,13 +117,17 @@
             <div class="inputArea">
                 <div>
                     <label for="player2" id="player2">Player 2</label>
-                    <input type="text" value="Player 2" id="plyr2N">
+                    <input type="text" value="Player 2" id="plyr2Name">
                 </div>
                 <div>
                     <label for="playerKey">Player Key</label>
-                    <input type="text" id="plyr2K" value="l">
+                    <input type="text" id="plyr2Key" value="l">
                 </div>
-            </div>
+                <div>
+                    <label for="player2" id="player2">Color</label>
+                    <input type="color" value="#0000ff" class="inputColor" id="plyr2Color">
+                </div>
+           </div>
             <div class="button">
                 <button onclick="ready2()">Ready</button>
             </div>
@@ -133,64 +144,76 @@
     
 
     <script>
-        let plyr1N = document.getElementById('plyr1N');
-        let plyr2N = document.getElementById('plyr2N');
-        let plyr1K = document.getElementById('plyr1K');
-        let plyr2K = document.getElementById('plyr2K');
+        let plyr1Name = document.getElementById('plyr1Name');
+        let plyr2Name = document.getElementById('plyr2Name');
+        let plyr1Key = document.getElementById('plyr1Key');
+        let plyr2Key = document.getElementById('plyr2Key');
         let team1 = document.getElementById('team1');
         let team2 = document.getElementById('team2');
+        let plyr1Color = document.getElementById('plyr1Color');
+        let plyr2Color = document.getElementById('plyr2Color');
 
         let t1 = false
         let t2 = false
         let done = false
 
-        if (localStorage.getItem('plyr1N') != null 
-            && localStorage.getItem('plyr1K') != null
-            && localStorage.getItem('plyr2N') != null
-            && localStorage.getItem('plyr2K') != null) {
-                plyr1N.value = localStorage.getItem('plyr1N')
-                plyr1K.value = localStorage.getItem('plyr1K')
-                plyr2N.value = localStorage.getItem('plyr2N')
-                plyr2K.value = localStorage.getItem('plyr2K')
+        let Ui2
+        let Ui1
 
-                document.getElementById('p1Box').innerHTML = plyr1N.value
-                document.getElementById('p2Box').innerHTML = plyr2N.value
+        if (localStorage.getItem('plyr1Name') != null 
+            && localStorage.getItem('plyr1Key') != null
+            && localStorage.getItem('plyr2Name') != null
+            && localStorage.getItem('plyr2Key') != null
+            && localStorage.getItem('plyr1Color') != ''
+            && localStorage.getItem('plyr2Color') != '') {
+                plyr1Name.value = localStorage.getItem('plyr1Name')
+                plyr1Key.value = localStorage.getItem('plyr1Key')
+                plyr1Color.value = localStorage.getItem('plyr1Color')
+                plyr2Name.value = localStorage.getItem('plyr2Name')
+                plyr2Key.value = localStorage.getItem('plyr2Key')
+                plyr2Color.value = localStorage.getItem('plyr2Color')
+
+                document.getElementById('p1Box').innerHTML = plyr1Name.value
+                document.getElementById('p2Box').innerHTML = plyr2Name.value
         } else {
-                localStorage.setItem('plyr1N', '')
-                localStorage.setItem('plyr1K', '')
-                localStorage.setItem('plyr2N', '')
-                localStorage.setItem('plyr2K', '')
+                localStorage.setItem('plyr1Name', '')
+                localStorage.setItem('plyr1Key', '')
+                localStorage.setItem('plyr1Color', '')
+                localStorage.setItem('plyr2Name', '')
+                localStorage.setItem('plyr2Key', '')
+                localStorage.setItem('plyr2Color', '')
+
             
-                document.getElementById('p1Box').innerHTML = plyr1N.value
-                document.getElementById('p2Box').innerHTML = plyr2N.value
+                document.getElementById('p1Box').innerHTML = plyr1Name.value
+                document.getElementById('p2Box').innerHTML = plyr2Name.value
         }
         
-        plyr1N.addEventListener('input', function (o){
+        plyr1Name.addEventListener('input', function (o){
             let max = 10
             let input = this.value
 
-            document.getElementById('p1Box').innerHTML = plyr1N.value
+            document.getElementById('p1Box').innerHTML = plyr1Name.value
             if (input.length > max) {
                 this.value = input.slice(0, max);
-                document.getElementById('p1Box').innerHTML = plyr1N.value
+                document.getElementById('p1Box').innerHTML = plyr1Name.value
             }
         })
 
-        plyr2N.addEventListener('input', function (o){
+        plyr2Name.addEventListener('input', function (o){
             let max = 10
             let input = this.value
 
-            document.getElementById('p2Box').innerHTML = plyr2N.value
+            document.getElementById('p2Box').innerHTML = plyr2Name.value
             if (input.length > max) {
                 this.value = input.slice(0, max);
-                document.getElementById('p2Box').innerHTML = plyr2N.value
+                document.getElementById('p2Box').innerHTML = plyr2Name.value
             }
         })
 
-        plyr1K.addEventListener('input', function(i){
+        plyr1Key.addEventListener('input', function(i){
             let max = 1
             let input = this.value
-            if (plyr1K.value != plyr2K.value) {
+            if (plyr1Key.value != plyr2Key.value) {
                 if (input.length > max) {
                     this.value = input.slice(0, max)
                 }
@@ -200,36 +223,38 @@
             }
         })
             
-        plyr2K.addEventListener('input', function(i){
+        plyr2Key.addEventListener('input', function(i){
             let max = 1
             let input = this.value
-            if (plyr2K.value != plyr1K.value) {
+            if (plyr2Key.value != plyr1Key.value) {
                 if (input.length > max) {
                     this.value = input.slice(0, max)
                 }
             } else {
                 alert('Same key is not allowed')
-                this.value = 'l '
+                this.value = 'l'
             }
         })
 
         document.addEventListener('keypress', function (z){
           if (z.key == 'Enter') {
-            plyr1N.blur()
-            plyr2N.blur()
-            plyr1K.blur()
-            plyr2K.blur()
+            plyr1Name.blur()
+            plyr2Name.blur()
+            plyr1Key.blur()
+            plyr2Key.blur()
+            plyr1Color.blur()
+            plyr2Color.blur()
           }  
         })
 
         document.addEventListener('keydown', function(a){
             if (t1 == true && t2 == true) {
                 if (!done) {
-                    if (a.key == plyr1K.value) {
-                        team1.style.backgroundColor = 'red'
+                    if (a.key == plyr1Key.value) {
+                        team1.style.backgroundColor = plyr1Color.value
                         done = true
-                    } else if (a.key == plyr2K.value) {
-                        team2.style.backgroundColor = 'blue'
+                    } else if (a.key == plyr2Key.value) {
+                        team2.style.backgroundColor = plyr2Color.value
                         done = true 
                     }
                 }
@@ -238,30 +263,37 @@
 
         function ready1() {
             t1 = true
-            localStorage.setItem('plyr1N', plyr1N.value)
-            localStorage.setItem('plyr1K', plyr1K.value)
+            localStorage.setItem('plyr1Name', plyr1Name.value)
+            localStorage.setItem('plyr1Key', plyr1Key.value)
+            localStorage.setItem('plyr1Color', plyr1Color.value)
 
-            plyr1N.disabled = true
-            plyr1K.disabled = true
-            plyr1N.style.backgroundColor = 'gray'
-            plyr1N.style.color = 'white'
-            plyr1K.style.backgroundColor = 'gray'
-            plyr1K.style.color = 'white'
+            plyr1Name.disabled = true
+            plyr1Key.disabled = true
+            plyr1Color.disabled = true
+            plyr1Name.style.backgroundColor = 'gray'
+            plyr1Name.style.color = 'white'
+            plyr1Key.style.backgroundColor = 'gray'
+            plyr1Key.style.color = 'white'
         }
 
         function ready2() {
             t2 = true
-            localStorage.setItem('plyr2N', plyr2N.value)
-            localStorage.setItem('plyr2K', plyr2K.value)
+            localStorage.setItem('plyr2Name', plyr2Name.value)
+            localStorage.setItem('plyr2Key', plyr2Key.value)
+            localStorage.setItem('plyr2Color', plyr2Color.value)
 
-            plyr2N.disabled = true
-            plyr2K.disabled = true
-            plyr2N.style.backgroundColor = 'gray'
-            plyr2N.style.color = 'white'
-            plyr2K.style.backgroundColor = 'gray'
-            plyr2K.style.color = 'white'
+
+            plyr2Name.disabled = true
+            plyr2Key.disabled = true
+            plyr2Color.disabled = true
+            plyr2Name.style.backgroundColor = 'gray'
+            plyr2Name.style.color = 'white'
+            plyr2Key.style.backgroundColor = 'gray'
+            plyr2Key.style.color = 'white'
 
         }
+
+        
 
     </script>
 </body>
