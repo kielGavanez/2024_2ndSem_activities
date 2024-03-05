@@ -90,11 +90,11 @@
             <div class="inputArea">
                 <div>
                     <label for="player1" id="player1">Player 1</label>
-                    <input type="text" value="Player 1" id="p1Name">
+                    <input type="text" value="Player 1" id="plyr1N">
                 </div>
                 <div>
                     <label for="playerKey">Player Key</label>
-                    <input type="text" id="p1Key" value="a">
+                    <input type="text" id="plyr1K" value="a">
                 </div>
             </div>
             <div class="button">
@@ -110,11 +110,11 @@
             <div class="inputArea">
                 <div>
                     <label for="player2" id="player2">Player 2</label>
-                    <input type="text" value="Player 2" id="p2Name">
+                    <input type="text" value="Player 2" id="plyr2N">
                 </div>
                 <div>
                     <label for="playerKey">Player Key</label>
-                    <input type="text" id="p2Key" value="l">
+                    <input type="text" id="plyr2K" value="l">
                 </div>
             </div>
             <div class="button">
@@ -133,10 +133,10 @@
     
 
     <script>
-        let p1Name = document.getElementById('p1Name');
-        let p2Name = document.getElementById('p2Name');
-        let p1Key = document.getElementById('p1Key');
-        let p2Key = document.getElementById('p2Key');
+        let plyr1N = document.getElementById('plyr1N');
+        let plyr2N = document.getElementById('plyr2N');
+        let plyr1K = document.getElementById('plyr1K');
+        let plyr2K = document.getElementById('plyr2K');
         let team1 = document.getElementById('team1');
         let team2 = document.getElementById('team2');
 
@@ -144,53 +144,53 @@
         let t2 = false
         let done = false
 
-        if (localStorage.getItem('p1Name') != null 
-            && localStorage.getItem('p1Key') != null
-            && localStorage.getItem('p2Name') != null
-            && localStorage.getItem('p2Key') != null) {
-                p1Name.value = localStorage.getItem('p1Name')
-                p1Key.value = localStorage.getItem('p1Key')
-                p2Name.value = localStorage.getItem('p2Name')
-                p2Key.value = localStorage.getItem('p2Key')
+        if (localStorage.getItem('plyr1N') != null 
+            && localStorage.getItem('plyr1K') != null
+            && localStorage.getItem('plyr2N') != null
+            && localStorage.getItem('plyr2K') != null) {
+                plyr1N.value = localStorage.getItem('plyr1N')
+                plyr1K.value = localStorage.getItem('plyr1K')
+                plyr2N.value = localStorage.getItem('plyr2N')
+                plyr2K.value = localStorage.getItem('plyr2K')
 
-                document.getElementById('p1Box').innerHTML = p1Name.value
-                document.getElementById('p2Box').innerHTML = p2Name.value
+                document.getElementById('p1Box').innerHTML = plyr1N.value
+                document.getElementById('p2Box').innerHTML = plyr2N.value
         } else {
-                localStorage.setItem('p1Name', '')
-                localStorage.setItem('p1Key', '')
-                localStorage.setItem('p2Name', '')
-                localStorage.setItem('p2Key', '')
+                localStorage.setItem('plyr1N', '')
+                localStorage.setItem('plyr1K', '')
+                localStorage.setItem('plyr2N', '')
+                localStorage.setItem('plyr2K', '')
             
-                document.getElementById('p1Box').innerHTML = p1Name.value
-                document.getElementById('p2Box').innerHTML = p2Name.value
+                document.getElementById('p1Box').innerHTML = plyr1N.value
+                document.getElementById('p2Box').innerHTML = plyr2N.value
         }
         
-        p1Name.addEventListener('input', function (o){
+        plyr1N.addEventListener('input', function (o){
             let max = 10
             let input = this.value
 
-            document.getElementById('p1Box').innerHTML = p1Name.value
+            document.getElementById('p1Box').innerHTML = plyr1N.value
             if (input.length > max) {
                 this.value = input.slice(0, max);
-                document.getElementById('p1Box').innerHTML = p1Name.value
+                document.getElementById('p1Box').innerHTML = plyr1N.value
             }
         })
 
-        p2Name.addEventListener('input', function (o){
+        plyr2N.addEventListener('input', function (o){
             let max = 10
             let input = this.value
 
-            document.getElementById('p2Box').innerHTML = p2Name.value
+            document.getElementById('p2Box').innerHTML = plyr2N.value
             if (input.length > max) {
                 this.value = input.slice(0, max);
-                document.getElementById('p2Box').innerHTML = p2Name.value
+                document.getElementById('p2Box').innerHTML = plyr2N.value
             }
         })
 
-        p1Key.addEventListener('input', function(i){
+        plyr1K.addEventListener('input', function(i){
             let max = 1
             let input = this.value
-            if (p1Key.value != p2Key.value) {
+            if (plyr1K.value != plyr2K.value) {
                 if (input.length > max) {
                     this.value = input.slice(0, max)
                 }
@@ -200,35 +200,35 @@
             }
         })
             
-        p2Key.addEventListener('input', function(i){
+        plyr2K.addEventListener('input', function(i){
             let max = 1
             let input = this.value
-            if (p2Key.value != p1Key.value) {
+            if (plyr2K.value != plyr1K.value) {
                 if (input.length > max) {
                     this.value = input.slice(0, max)
                 }
             } else {
                 alert('Same key is not allowed')
-                this.value = 'a'
+                this.value = 'l '
             }
         })
 
         document.addEventListener('keypress', function (z){
           if (z.key == 'Enter') {
-            p1Name.blur()
-            p2Name.blur()
-            p1Key.blur()
-            p2Key.blur()
+            plyr1N.blur()
+            plyr2N.blur()
+            plyr1K.blur()
+            plyr2K.blur()
           }  
         })
 
         document.addEventListener('keydown', function(a){
             if (t1 == true && t2 == true) {
                 if (!done) {
-                    if (a.key == p1Key.value) {
+                    if (a.key == plyr1K.value) {
                         team1.style.backgroundColor = 'red'
                         done = true
-                    } else if (a.key == p2Key.value) {
+                    } else if (a.key == plyr2K.value) {
                         team2.style.backgroundColor = 'blue'
                         done = true 
                     }
@@ -238,28 +238,28 @@
 
         function ready1() {
             t1 = true
-            localStorage.setItem('p1Name', p1Name.value)
-            localStorage.setItem('p1Key', p1Key.value)
+            localStorage.setItem('plyr1N', plyr1N.value)
+            localStorage.setItem('plyr1K', plyr1K.value)
 
-            p1Name.disabled = true
-            p1Key.disabled = true
-            p1Name.style.backgroundColor = 'gray'
-            p1Name.style.color = 'white'
-            p1Key.style.backgroundColor = 'gray'
-            p1Key.style.color = 'white'
+            plyr1N.disabled = true
+            plyr1K.disabled = true
+            plyr1N.style.backgroundColor = 'gray'
+            plyr1N.style.color = 'white'
+            plyr1K.style.backgroundColor = 'gray'
+            plyr1K.style.color = 'white'
         }
 
         function ready2() {
             t2 = true
-            localStorage.setItem('p2Name', p2Name.value)
-            localStorage.setItem('p2Key', p2Key.value)
+            localStorage.setItem('plyr2N', plyr2N.value)
+            localStorage.setItem('plyr2K', plyr2K.value)
 
-            p2Name.disabled = true
-            p2Key.disabled = true
-            p2Name.style.backgroundColor = 'gray'
-            p2Name.style.color = 'white'
-            p2Key.style.backgroundColor = 'gray'
-            p2Key.style.color = 'white'
+            plyr2N.disabled = true
+            plyr2K.disabled = true
+            plyr2N.style.backgroundColor = 'gray'
+            plyr2N.style.color = 'white'
+            plyr2K.style.backgroundColor = 'gray'
+            plyr2K.style.color = 'white'
 
         }
 
