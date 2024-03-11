@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #box {
+            width: 128px;
+            height: 128px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Kiel Andrew Gavanez</h1>
+        <div id="box" onclick="start()"></div>
+    </div>
+
+    <script>
+        const lastName = 'Gavanez';
+        const firstName = 'Kiel Andrew';
+        var gender = 'male';
+
+        var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+
+        let secret = [[15,14,6,8,' ',0,10,14],
+                    [12,0,6,0,13,3,0,' ',0,10,14],
+                    [15,14,6,8,' ',0,19,' ',12,0,6,0,13,3,0,' ',0,10,14]];
+
+        var secretChoice = -1;
+
+        if (gender == 'male') {
+            secretChoice = 0;
+        } else if (gender == 'female'){
+            secretChoice = 1;
+        } else {
+            secretChoice = 2;
+        };
+
+        var output = '';
+
+
+        function start(){
+            document.getElementById('box').style.backgroundColor = 'yellow';
+
+            for (let i = 0; i < secret[secretChoice].length; i++) {
+            output += typeof letters[secret[secretChoice][i]] == 'undefined' 
+            ? ' ' : letters[secret[secretChoice][i]];
+            
+            }
+            alert(output);
+        }
+
+        
+    </script>
+</body>
+</html>
