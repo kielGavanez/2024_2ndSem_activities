@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 1px solid black;
+        }
+        body {
+            background-color: white;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding-block: 2rem;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-block: 9.5rem;
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            padding-block: 2rem;
+        }
+        .header, div{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .main1 {
+            display: flex;
+            background-color: red;
+            height: 400px;
+            width: 400px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        .main2 {
+            display: flex;
+            background-color: blue;
+            height: 400px;
+            width: 400px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+        p   {
+            display: flex;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Activity 3</h1>
+        </div>
+        <div>
+            <h1>Counter</h1>
+        </div>
+    </header>
+    <main>
+        <div class="main1">
+            <h2 id="team1">0</h2>
+            <p>team 1</p>
+        </div>
+        <div class="main2">
+            <h2 id="team2">0</h2>
+            <p>team 2</p>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <h1>Made by Kiel Andrew Gavanez</h1>
+        </div>
+    </footer>
+
+    <script>
+        const team1 = document.getElementById('team1');
+        const team2 = document.getElementById('team2');
+
+        team1.innerText = localStorage.getItem('team1Score');
+        team2.innerText = localStorage.getItem('team2Score');
+
+        document.addEventListener('keydown', function(q){
+            if (q.key == 'a') {
+                team1.innerText = Number(team1.innerText) +1;
+            }else if (q.key == 'z'){
+                team1.innerText = Number(team1.innerText) -1;
+                if (team1.innerText < 0){
+                team1.innerText = 0;       
+                 } 
+            }
+            localStorage.setItem('team1Score', team1.innerText);
+            
+        });
+
+        document.addEventListener('keydown', function(p){
+            if (p.key == 'l') {
+                team2.innerText = Number(team2.innerText) +1;
+            } else if (p.key == 'm'){
+                team2.innerText = Number(team2.innerText) -1;
+                if (team2.innerText < 0){
+                team2.innerText = 0;       
+                 } 
+            } 
+            localStorage.setItem('team2Score', team2.innerText);
+        })
+    </script>
+</body>
+</html>
