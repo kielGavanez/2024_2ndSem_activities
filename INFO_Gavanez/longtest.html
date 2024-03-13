@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Task 0: Set the title of this page to 'Long Test' -->
+    <title>Long Test</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    
+        html, body {
+            height: 100%;
+            color: white;
+            font-family: Helvetica;
+        }
+ 
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+ 
+        #cipher { 
+            margin: 0;
+            margin-bottom: 2rem;
+            padding: 0;
+        }
+ 
+        #text {
+            font-size: 4rem;
+            margin: 0;
+            padding: 0;
+        }
+        
+        #shift {
+            height: 128px;
+            width: 80px;
+            text-align: center;
+            font-size: 2rem;
+            outline: none;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+ 
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Task 1: Make a div with a class of 'container' -->
+    <div class="container">
+          <!-- Task 2: Inside the div you just made. Make an H1 element with the id of text -->
+        <h1 id="text">
+<!-- Task 3: Inside that H1 element you just made, make a SPAN element with an id of 'greeting' -->
+            <span id="greeting">
+
+            </span>
+<!-- Task 4: In that same H1 element, after the span element, add the following text: ', [YOUR FIRST NAME]' (do not include the quotes). E.g: , Joseph -->
+
+            , Kiel Andrew
+        </h1>
+<!-- Task 5: In the div with the class of 'container', add an H2 element right below the H1 element you just made and give it an id of 'cipher' -->
+        <h2 id="cipher">
+        </h2>
+<!-- Task 6: In the div with the class of 'container', after the H2 element. Add an input element wit the id of shift. -->
+
+        <input type="text" id="shift">
+    </div>
+
+    <script>
+
+
+    // Task 7: Create a variable named 'gender' and assign it to any of the following: 'male', 'female', or your gender preference.
+        let gender = 'male';
+    // Task 8: Create a variable named 'firstName' and assign it to your first name.
+        let firstName = 'Kiel Andrew';
+    // Task 10: Create a varialbe named 'lastName' and assign it to your last name.
+        let lastName = 'Gavanez';
+    // Task 11: Create a variable named 'favoriteColor' and assign it to your favorite color.
+        let favoriteColor = 'green';
+    // Task 12: Create a variable named 'secondFavoriteColor' and assign it to your second favorite color.
+        let secondFavoriteColor = 'purple';
+    // Task 13: Create a variable that is all letters from A-Z (only uppercase). This should be a string without any delimiters.
+        let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    
+    
+    document.body.style.background = `linear-gradient(-45deg, ${favoriteColor}, ${secondFavoriteColor})`;
+    document.body.style.animation = 'gradient 15s ease infinite';
+    document.body.style.backgroundSize = '400% 400%';
+ 
+    document.getElementById('shift').addEventListener('input', function(e) {
+      if(!e.target.value || isNaN(e.target.value)) return;
+ 
+      let cipherText = '';
+      for(let char of document.getElementById('text').innerText) {
+        if(letters.indexOf(char.toUpperCase()) > -1) {
+          cipherText += letters[(letters.indexOf(char.toUpperCase()) + Number(e.target.value)) % 26];
+        }
+        else {
+          cipherText += char;
+        }
+      }
+      document.getElementById('cipher').innerText = cipherText;
+    });
+ 
+    function updateGreeting(gender) {
+      const greetings = {'male': 'Sir', 'female': 'Ma\'am', 'other': 'Hello'}
+      document.getElementById('greeting').innerText = greetings[gender] ?? 'Hi';
+    }
+
+    updateGreeting(gender);
+    </script>
+</body>
+</html>
