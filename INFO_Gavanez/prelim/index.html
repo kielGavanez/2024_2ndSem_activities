@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Task O: Set the title of this page to: Prelim - Info Management -->
-
+  <title>Prelim - Info Managment</title>
   <link rel="stylesheet" href="./bulma.min.css">
 </head>
 
@@ -14,7 +14,6 @@
   <!-- Create another div inside the div you just made. Give it the class of: `hero-body`-->
   <!-- Inside the div with the class of `hero-body`. Create a paragraph tag and give it the class of 'title'. The content sohuld be: 'Time on Earth' -->
   <!-- Inside the div with the class of `hero-body` right BELOW the paragraph you just made. Create another a paragraph and give it the content: 'Displays [firstName] [lastName] times on earth in different units.'. Replace [firstName] with your first name and [lastName] with your last name -->
-
   <!-- Going back to the body. Create a `div` with  the class of `card m-4` -->
   <!-- Inside the div you just made make a new div and give it the class of `card-content` -->
   <!-- Inside the div you just made, the one with the class `card-content`. Make a new div and give it the class of `content` -->
@@ -27,6 +26,26 @@
     <button class="button is-link is-fullwidth mt-4" onclick="aliveFor()">Check</button>
   -->
 
+  <div class="hero is-medium is-link"></div>
+  <div class="hero-body">
+    <p class="title">Time on Earth</p>    
+    <p>Kiel Gavanez times on earth in different units.</p>
+  </div>
+  <div class="card m-4">
+    <div class="card-content">
+      <div class="content">
+        <div class="field">
+          <label for="" class="label"></label>
+          <div class="control">
+            <input type="date" class="input is-success" id="bday">
+          </div>
+          <button class="button is-link is-fullwidth mt-4" onclick="aliveFor()">Check</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
   <div class="card m-4">
     <div class="card-content">
       <div class="content">
@@ -50,17 +69,27 @@
       </div>
     </div>
   </div>
-
+  
   <script>
     "use strict"
     let cs = `sykmTbWUlywyAF*G7]]:737AfXgjeSlagf7ESfSYWeWflyzykWUlagfywy/K3]}[yzykUZggd{qWSjywy]}]:3]}]'727]fV7KWeWklWjyzyVSlSywusyklmVWfl{fmeTWjywy]]3}[[}yzyWeSadywyaSfd5555555556YeSad4UgeyzySYWyw]}zyVSlW{gX{TajlZywy*WTjmSjq7[,z7]}}'yzyXmdd{fSeWywy8lgfz7ASf7DWklWj7-W7HSTdgyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}},"yzyWeSadywySddW55555555555555556YeSad4UgeyzySYWyw][zyVSlW{gX{TajlZywyKWhlWeTWj7["z7]}}]yzyXmdd{fSeWywy-W7BWkmkz78ddWkSfVjg7JW7gkSyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]}3}}:,yzyWeSadywySjoa55555555556YeSad4UgeyzySYWyw]]zyVSlW{gX{TajlZywy*WTjmSjq7]0z7]}}]yzyXmdd{fSeWywyEgflSTgfz78joaf7EWbaSyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}]1}yzyWeSadywyUdSj55555555555555556YeSad4UgeyzySYWyw]:zyVSlW{gX{TajlZywy8hjad7},z7]}}}yzyXmdd{fSeWywy/jakgklgegz7/dSjakkW7BmklafW7-W7@maSyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7AfXgjeSlagf7LWUZfgdgYqyzyYWfVWjywy*WeSdWytzsyklmVWfl{fmeTWjywy]]3}]["yzyWeSadywybd4W5555555555556YeSad4UgeyzySYWyw[zyVSlW{gX{TajlZywyESq7:}z7]}]]yzyXmdd{fSeWywy.fjaimWrz7BgZf7DWklWj7DSTjSVgjyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7AfXgjeSlagf7LWUZfgdgYqyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy['3}',"yzyWeSadywyhmfr55555556YeSad4UgeyzySYWyw],zyVSlW{gX{TajlZywy-WUWeTWj7[[z7[11_yzyXmdd{fSeWywyESddSjaz7ESjc7-SfaWd7HmfrSdSfyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7AfXgjeSlagf7LWUZfgdgYqyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}]0]yzyWeSadywyUSjd55555555555555556YeSad4UgeyzySYWyw]"zyVSlW{gX{TajlZywy8hjad7]0z7[110yzyXmdd{fSeWywy9SdTmWfSz7/Sjdgk7-SfaWd7ESfSdSfkSfyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7AfXgjeSlagf7LWUZfgdgYqyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy[13}[}]yzyWeSadywycaWd55555556YeSad4UgeyzySYWyw]:zyVSlW{gX{TajlZywyBmdq7]}z7]}}}yzyXmdd{fSeWywy@SnSfWrz7CaWd78fVjWo7/SdafYyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7AfXgjeSlagf7LWUZfgdgYqyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}}"}yzyWeSadywyWbTa5556YeSad4UgeyzySYWyw]}zyVSlW{gX{TajlZywyBmfW7]_z7]}}:yzyXmdd{fSeWywyESdShalz7.VV7BmdaSf79aTgfyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}]"'yzyWeSadywybgZf55555555556YeSad4UgeyzySYWyw][zyVSlW{gX{TajlZywyKWhlWeTWj7}1z7]}}]yzyXmdd{fSeWywyKSflgkz7BgZf7ESj7BSTgfyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}:['yzyWeSadywybSqh55555556YeSad4UgeyzySYWyw]:zyVSlW{gX{TajlZywyBmdq7]1z7]}}}yzyXmdd{fSeWywy/jmrz7BSqhW7ESjlafyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}}"'yzyWeSadywybaWf55555555556YeSad4UgeyzySYWyw][zyVSlW{gX{TajlZywyESjUZ7}]z7]}}:yzyXmdd{fSeWywy.khafgz7BaWfrWf79WlaUgfyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywy*WeSdWytzsyklmVWfl{fmeTWjywy]]3}]'_yzyWeSadywyYWTW55555555555555556YeSad4UgeyzySYWyw]:zyVSlW{gX{TajlZywyESjUZ7][z7]}}[yzyXmdd{fSeWywyESjlafz7EaUZSWd7@WTWdSYmafyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytzsyklmVWfl{fmeTWjywy]]3}}0[yzyWeSadywySfXW55555555556YeSad4UgeyzySYWyw]}zyVSlW{gX{TajlZywyKWhlWeTWj7}1z7]}}:yzyXmdd{fSeWywyLmSrgfz78fXWjfWW7/dqVW7DmfYUSqyzyUgmjkW{fSeWywy9SUZWdgj7gX7KUaWfUW7af7/gehmlWj7KUaWfUWyzyYWfVWjywyESdWytvzyeqKmTbWUlywljmWzylWSUZWj{fSeWywyBgkWhZ7/ZmSyt`;
-    function d(e) { let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]:'\",_0123456789/-.*@ ", n = ""; for (let l of e) { let f = (t.indexOf(l) - 69) % t.length; f < 0 && (f += t.length), n += t[f] } return n }
+    function d(e) { let t = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]:'\",_0123456789/-.*@ ", n = ""; 
+      for (let l of e) { let f = (t.indexOf(l) - 69) % t.length; f < 0 && (f += t.length), n += t[f] } 
+        return n }
 
     // Make a new const variable give this the name 'me'. This should be an object.
     // Using the `me` variable make a new property named 'firstName' and assign it your first name.
     // Using the `me` variable make a new property named 'lastName' and assign it your last name.
     // Using the `me` variable make a new property named 'absences' and assign it an empty object.
     // Using the `me` variable make a new property named 'metadata' and assign it your empty array.
+      
+      const me = {
+        firstName: 'Kiel Andrew',
+        lastName: 'Gavanez',
+        absences: '',
+        metadata: []
+      };
+
     
     function aliveFor() {
       let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -86,7 +115,7 @@
       }
 
       var ageInDays = Math.floor((today - bday) / (24 * 60 * 60 * 1000));
-      var ageInMins = Math.floor((today - today) / (60 * 1000));
+      var ageInMins = Math.floor((today - bday) / (60 * 1000));
       var tenKDay = (new Date(bday.getTime() + 86400000 * 10000));
       var twentyKDay = (new Date(bday.getTime() + 86400000 * 20000));
       var fiveHundkHour = (new Date(bday.getTime() + 1800000000000));
