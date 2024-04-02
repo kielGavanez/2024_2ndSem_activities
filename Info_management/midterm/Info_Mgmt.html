@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;    
+            /* background-color: aqua; */
+            padding-block: 2rem;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            padding-block: 10%;
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            /* background-color: aquamarine; */
+            padding-block: 2rem;
+        }
+        .header, div{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #scoreBoard{
+            display: flex;
+            background-color: gray;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Activity 1</h1>
+        </div>
+        <div>
+            <h1>Activity Name</h1>
+        </div>
+    </header>
+    <div id="scoreBoard"><h1>0</h1></div>  
+    <main>
+        
+        <div class="mainTask" style="border: solid black 1px; padding-block: 2rem; padding-inline: 4rem;">
+            <input type="checkbox" name="main" id="main"><span> Task 1</span>
+            <div class="subTask"><input type="checkbox" name="subTask" id="subTask1"><span>Hello World</span> </div>
+            <div class="subTask"><input type="checkbox" name="subTask" id="subTask2"><span>Hello Earth</span> </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <h1>Made by: Kiel Andrew Gavanez</h1>
+        </div>
+    </footer>
+</body>
+<script>
+    var myTasks = {
+        title: 'Task 1',
+        points:'10',
+        subtasks:[
+        {
+                title:'Hello World',
+                points:'10',
+                complete:'false'
+            },{
+                title:'Hello Earth',
+                points:'10',
+                complete:'false'
+            }
+        ]
+    }
+    
+
+    // addEventListener('input', function (e){
+    //     if (subInput == checked) {
+    //         myTasks.subtasks[]
+    //     }
+    // });
+
+    for (let i = 0; i < myTasks.subtasks.length; i++) {
+        const subTasks = myTasks.subtasks[i];
+        console.log(subTasks);
+        subTaskScore += number(subtasks.points);
+        
+        
+    }
+</script>
+</html>
